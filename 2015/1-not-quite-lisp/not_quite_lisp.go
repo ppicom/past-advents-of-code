@@ -3,17 +3,12 @@ package notquitelisp
 import "strings"
 
 func TranslateDirectionsToFloor(directions string) (floor int) {
+
 	split := strings.Split(directions, "")
 
 	for _, direction := range split {
 
-		if direction == "(" {
-
-			floor += 1
-		} else {
-
-			floor -= 1
-		}
+		floor = getNextFloorFor(direction, floor)
 
 	}
 
@@ -21,6 +16,7 @@ func TranslateDirectionsToFloor(directions string) (floor int) {
 }
 
 func EntersTheBasementAt(directions string) (position int) {
+
 	split := strings.Split(directions, "")
 
 	var currentFloor int
@@ -28,13 +24,7 @@ func EntersTheBasementAt(directions string) (position int) {
 
 		position++
 
-		if direction == "(" {
-
-			currentFloor += 1
-		} else {
-
-			currentFloor -= 1
-		}
+		currentFloor = getNextFloorFor(direction, currentFloor)
 
 		if currentFloor < 0 {
 			return
@@ -42,4 +32,14 @@ func EntersTheBasementAt(directions string) (position int) {
 	}
 
 	return
+}
+
+func getNextFloorFor(direction string, currentFloor int) int {
+
+	if direction == "(" {
+
+		return currentFloor + 1
+	}
+
+	return currentFloor - 1
 }
