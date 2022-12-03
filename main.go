@@ -5,6 +5,7 @@ import (
 	"os"
 
 	notquitelisp "github.com/ppicom/past-advents-of-code/2015/1-not-quite-lisp"
+	nomath "github.com/ppicom/past-advents-of-code/2015/2-no-math"
 )
 
 func main() {
@@ -18,4 +19,12 @@ func main() {
 
 	position := notquitelisp.EntersTheBasementAt(string(notquitelispdata))
 	fmt.Printf("Santa enters the basement at: %d\n", position)
+
+	nomathdata, err := os.ReadFile("input_nomath.txt")
+	if err != nil {
+		panic(err)
+	}
+
+	surface := nomath.MeasureWrappingPaperSurface(string(nomathdata))
+	fmt.Printf("Wrapping paper surface: %d\n", surface)
 }
