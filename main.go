@@ -27,4 +27,7 @@ func main() {
 
 	surface := nomath.MeasureWrappingPaperSurface(string(nomathdata))
 	fmt.Printf("Wrapping paper surface: %d\n", surface)
+
+	ribbon := nomath.MeasureRibbonLength(string(nomathdata))
+	fmt.Printf("Ribbon length: %d\n", ribbon)
 }
