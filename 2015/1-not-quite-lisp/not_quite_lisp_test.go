@@ -12,7 +12,7 @@ type TestSuite struct {
 
 func (suite *TestSuite) SetupTest() {}
 
-func (suite *TestSuite) TestXxx() {
+func (suite *TestSuite) TestSantasFloor() {
 
 	tests := []struct {
 		input  string
@@ -72,6 +72,29 @@ func (suite *TestSuite) TestXxx() {
 
 		floor := TranslateDirectionsToFloor(tt.input)
 		suite.Equal(tt.output, floor)
+	}
+}
+
+func (suite *TestSuite) TestEnteringBasement() {
+
+	tests := []struct {
+		input  string
+		output int
+	}{
+		{
+			input:  ")",
+			output: 1,
+		},
+		{
+			input:  "()())",
+			output: 5,
+		},
+	}
+
+	for _, tt := range tests {
+
+		position := EntersTheBasementAt(tt.input)
+		suite.Equal(tt.output, position)
 	}
 }
 

@@ -14,6 +14,8 @@ func main() {
 	}
 
 	floor := notquitelisp.TranslateDirectionsToFloor(string(notquitelispdata))
-
 	fmt.Printf("Santa's floor is: %d\n", floor)
+
+	position := notquitelisp.EntersTheBasementAt(string(notquitelispdata))
+	fmt.Printf("Santa enters the basement at: %d\n", position)
 }
